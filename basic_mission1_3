@@ -1,0 +1,76 @@
+#####################################
+#       Basic Mission #1
+#       신호등 컨트롤러 설계
+#####################################
+
+#clrstate = ["green", "yellow", "left", "red", "blink"]
+cycle = 0
+ncycle = 0
+human_clrstate = ""
+car_clrstate = ""
+
+
+
+def CarTraffic():
+
+    if 1<= cycle <= 20:
+        car_clrstate = "green"
+        
+    elif 21<= cycle <=22:
+        car_clrstate = "yellow"
+ 
+    elif 23 <= cycle <= 32:
+        car_clrstate = "left"
+ 
+    elif 33 <= cycle <= 34:
+        car_clrstate = "yellow"
+ 
+    elif 35 <= cycle <=68:
+        car_clrstate = "red"
+ 
+
+
+def HumanTraffic():
+
+
+    if 1<= cycle <= 34:
+        human_clrstate = "red"
+ 
+    elif 35 <= cycle <=48:
+        human_clrstate = "green"
+ 
+    elif 49 <= cycle <= 54:
+        human_clrstate = "blink"
+ 
+    elif 55 <= cycle <= 68:
+        human_clrstate = "red"
+ 
+
+
+start = input("start를 입력하면 시작합니다: ")
+
+if start == "start":
+    mode = int(input('mode를 선택하세요.\n 1: normal mode \n 2: monitor mode\n'))
+
+    if mode == 1:   #normal mode
+        print('[normal mode]\n')
+
+        for j in range(70):
+            cycle += 1
+            CarTraffic()
+            HumanTraffic()
+            print(cycle, "cycle: ", "[car: ", car_clrstate, "]", "[human: ", human_clrstate, "]")
+
+    elif mode == 2: #monitor mode
+        print('[monitor mode]\n')
+
+        ncycle = int(input("궁금한 cycle 번호를 입력해주세요: "))
+        for j in range(70):
+            cycle += 1
+            CarTraffic()
+            HumanTraffic()
+            if cycle == ncycle:
+                print(cycle, "cycle: ", "[car ", car_clrstate, "]", "[human: ", human_clrstate, "]")
+
+
+
