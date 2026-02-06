@@ -48,7 +48,7 @@ def CarTraffic():
 
 def HumanTraffic():
     for k in range(70):
-        count = 0
+        count += 1
 
         clrstate = 'red'
 
